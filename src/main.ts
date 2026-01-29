@@ -75,6 +75,7 @@ Platform.shim.eval = jsInterpreter;
 
 innertubeClient = await Innertube.create({
     enable_session_cache: false,
+    cache: new (Platform.shim.Cache)(true, '/var/tmp/youtubei.js'),
     retrieve_player: innertubeClientFetchPlayer,
     fetch: getFetchClient(config),
     cookie: innertubeClientCookies || undefined,
@@ -124,6 +125,7 @@ if (!innertubeClientOauthEnabled) {
             } else {
                 innertubeClient = await Innertube.create({
                     enable_session_cache: false,
+                    cache: new (Platform.shim.Cache)(true, '/var/tmp/youtubei.js'),
                     fetch: getFetchClient(config),
                     retrieve_player: innertubeClientFetchPlayer,
                     user_agent: USER_AGENT,
